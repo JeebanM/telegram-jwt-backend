@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ✅ Health Check (for browser or ngrok test)
-app.get('/', (_, res) => {
-  res.send('🚀 Telegram JWT Backend is working!');
+// Health check route (useful for Render, Vercel, or ngrok)
+app.get('/', (_req, res) => {
+  res.status(200).send('🚀 Telegram JWT Backend is working!');
 });
 
-// Routes
+// Auth routes
 app.use('/api/auth', authRoutes);
 
 // Start server
