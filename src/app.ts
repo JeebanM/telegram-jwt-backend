@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Health check route (useful for Render, Vercel, or ngrok)
-app.get('/', (_req, res) => {
+// Health check route
+app.get('/', (_req: Request, res: Response) => {
   res.status(200).send('🚀 Telegram JWT Backend is working!');
 });
 
-// Auth routes
+// Routes
 app.use('/api/auth', authRoutes);
 
 // Start server
